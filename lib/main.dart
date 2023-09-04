@@ -3,7 +3,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:movie_list/pages/home_page.dart';
 import 'package:movie_list/pages/login_page.dart';
 import 'package:movie_list/pages/signUp_page.dart';
-
 Future<void> main() async {
   await GetStorage.init();
   runApp(const MyApp());

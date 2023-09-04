@@ -16,14 +16,14 @@ class _MyDrawerState extends State<MyDrawer> {
         children:  [
           UserAccountsDrawerHeader(
             accountName: Text(
-              "Geeksynergy Technologies Pvt Ltd",
+              "sanjesh kumar tiwari",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            accountEmail: Text("XXXXXX@gmail.com",
+            accountEmail: Text("sanjesh163@gmail.com",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
             currentAccountPicture: CircleAvatar(
                 child: Text(
-                  "G",
+                  "S",
                   style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
                 )),
           ),

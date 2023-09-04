@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:movie_list/pages/home_page.dart';
 import 'package:movie_list/pages/signUp_page.dart';
@@ -43,13 +44,14 @@ class _LogInPageState extends State<LogInPage> {
                 Padding(
                   padding: EdgeInsets.all(12.0),
                   child: TextField(
+                    keyboardType: TextInputType.number,
                     controller: contactController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        labelText: "phone no",
-                        hintText: "enter your phone no",
+                        labelText: "Phone no",
+                        hintText: "Enter your phone no",
                         fillColor: Colors.red.withOpacity(0.09),
                         filled: true),
                   ),
@@ -63,8 +65,8 @@ class _LogInPageState extends State<LogInPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        labelText: "password",
-                        hintText: "enter your password",
+                        labelText: "Password",
+                        hintText: "Enter your password",
                         fillColor: Colors.red.withOpacity(0.09),
                         filled: true),
                   ),
@@ -78,13 +80,35 @@ class _LogInPageState extends State<LogInPage> {
                         userdata.write("islogin", true);
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomePage()));
                       }else{
-                        Fluttertoast.showToast(
-                            msg: "invalid Credential",
-                            backgroundColor: Colors.red);
+
+                        showToastWidget(
+                          Container(
+                          padding: EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Colors.red, // Change the background color here
+                          ),
+                          child: Text(
+                            'Invalid Credential',
+                            style: TextStyle(
+                              color: Colors.white, // Change the text color here
+                            ),
+                          ),
+                        ),
+                          context: context,
+                          animation: StyledToastAnimation.scale,
+                          reverseAnimation: StyledToastAnimation.fade,
+                          position: StyledToastPosition.top,
+                          animDuration: Duration(seconds: 1),
+                          duration: Duration(seconds: 4),
+                          curve: Curves.elasticOut,
+                          reverseCurve: Curves.easeInBack,
+                        );
+
                       }
                     },
                     child: Text(
-                      "log in",
+                      "Log in",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -105,7 +129,7 @@ class _LogInPageState extends State<LogInPage> {
                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SignUpPage()));
                         },
                         child: Text(
-                          "SignUp",
+                          "Sign Up",
                           style: TextStyle(fontSize: 20),
                         ))
                   ],
